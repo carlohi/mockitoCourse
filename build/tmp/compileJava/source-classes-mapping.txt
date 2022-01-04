@@ -1,0 +1,10 @@
+org/cosses/appmockito/ejemplos/models/Examen.java
+ org.cosses.appmockito.ejemplos.models.Examen
+org/cosses/appmockito/ejemplos/services/ExamenService.java
+ org.cosses.appmockito.ejemplos.services.ExamenService
+org/cosses/appmockito/ejemplos/repositories/ExamenRepository.java
+ org.cosses.appmockito.ejemplos.repositories.ExamenRepository
+org/cosses/appmockito/ejemplos/services/ExamenServiceImpl.java
+ org.cosses.appmockito.ejemplos.services.ExamenServiceImpl
+org/cosses/appmockito/ejemplos/repositories/ExamenRepositoryImpl.java
+ org.cosses.appmockito.ejemplos.repositories.ExamenRepositoryImpl

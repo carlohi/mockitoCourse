@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group 'org.cosses.appmockito.ejemplos'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    implementation 'org.mockito:mockito-core:4.2.0'
+    implementation 'org.mockito:mockito-junit-jupiter:4.2.0'
+}
+
+test {
+    useJUnitPlatform()
+}

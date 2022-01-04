@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.cosses.appmockito.ejemplos.services.ExamenServiceImplTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-01-04T02:15:45" hostname="DESKTOP-9NGV18T" time="0.416">
+  <properties/>
+  <testcase name="findExamenbyNombre()" classname="org.cosses.appmockito.ejemplos.services.ExamenServiceImplTest" time="0.413"/>
+  <testcase name="findExamenbyNombreEmptyList()" classname="org.cosses.appmockito.ejemplos.services.ExamenServiceImplTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
