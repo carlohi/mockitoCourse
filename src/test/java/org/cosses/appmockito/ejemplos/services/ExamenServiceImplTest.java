@@ -7,10 +7,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import java.util.Arrays;
 import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 class ExamenServiceImplTest {
 
@@ -27,7 +29,7 @@ class ExamenServiceImplTest {
 
     @Test
     void findExamenbyNombre() {
-        Mockito.when(examenRepository.findAll()).thenReturn(Arrays.asList(new Examen(5L, "Matematicas"), new Examen(6L,"Lenguaje"),new Examen(7l,"Ciencias")));
+        when(examenRepository.findAll()).thenReturn(Datos.EXAMENES);
         Examen examen = service.findExamenbyNombre("Matematicas");
         assertNotNull(examen);
         assertEquals(5L, examen.getId());
@@ -36,7 +38,20 @@ class ExamenServiceImplTest {
 
     @Test
     void findExamenbyNombreEmptyList() {
-        Mockito.when(examenRepository.findAll()).thenReturn(Collections.emptyList());
+        when(examenRepository.findAll()).thenReturn(Collections.emptyList());
         assertTrue(examenRepository.findAll().isEmpty());
     }
+
+    @Test
+    void testPreguntasExamen(){
+        when(examenRepository.findAll()).thenReturn(Datos.EXAMENES);
+        when(preguntaRepository.findPreguntasByExamenId(anyLong())).thenReturn(Datos.PREGUNTAS);
+        var examen = service.findExamenByNombreConPreguntas("Lenguaje");
+        assertEquals(5,examen.getPreguntas().size());
+        assertTrue(examen.getPreguntas().contains("Integrales"));
+        verify(examenRepository).findAll();
+        verify(preguntaRepository).findPreguntasByExamenId(6L);
+    }
+
+
 }

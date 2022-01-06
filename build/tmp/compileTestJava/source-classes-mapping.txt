@@ -1,2 +1,4 @@
+org/cosses/appmockito/ejemplos/services/Datos.java
+ org.cosses.appmockito.ejemplos.services.Datos
 org/cosses/appmockito/ejemplos/services/ExamenServiceImplTest.java
  org.cosses.appmockito.ejemplos.services.ExamenServiceImplTest
