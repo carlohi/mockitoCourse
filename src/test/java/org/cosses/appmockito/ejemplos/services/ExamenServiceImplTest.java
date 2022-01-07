@@ -3,29 +3,31 @@ package org.cosses.appmockito.ejemplos.services;
 import org.cosses.appmockito.ejemplos.models.Examen;
 import org.cosses.appmockito.ejemplos.repositories.ExamenRepository;
 import org.cosses.appmockito.ejemplos.repositories.PreguntaRepository;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 class ExamenServiceImplTest {
 
+    @Mock
     ExamenRepository examenRepository;
-    ExamenService service;
-    PreguntaRepository preguntaRepository;
 
-    @BeforeEach
-    void setUp(){
-        examenRepository = Mockito.mock(ExamenRepository.class);
-        preguntaRepository = Mockito.mock(PreguntaRepository.class);
-        service = new ExamenServiceImpl(examenRepository,preguntaRepository);
-    }
+    @InjectMocks
+    ExamenServiceImpl service;
+
+    @Mock
+    PreguntaRepository preguntaRepository;
 
     @Test
     void findExamenbyNombre() {
@@ -51,6 +53,14 @@ class ExamenServiceImplTest {
         assertTrue(examen.getPreguntas().contains("Integrales"));
         verify(examenRepository).findAll();
         verify(preguntaRepository).findPreguntasByExamenId(6L);
+    }
+
+    @Test
+    void testSaveExamen(){
+        when(examenRepository.save(any(Examen.class))).thenReturn(Datos.EXAMEN);
+        Examen examen = service.save(Datos.EXAMEN);
+        assertNotNull(examen.getId());
+        assertEquals("Fisica",examen.getNombre());
     }
 
 

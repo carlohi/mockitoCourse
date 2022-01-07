@@ -6,10 +6,15 @@ import java.util.Collections;
 import java.util.List;
 
 public class ExamenRepositoryImpl implements ExamenRepository{
+
     @Override
     public List<Examen> findAll() {
         return Collections.emptyList();
     }
 
+    @Override
+    public Examen save(Examen examen) {
+        return null;
+    }
 
 }
